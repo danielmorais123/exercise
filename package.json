@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "json-server": "json-server --watch db/data.json --port 5000"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -15,6 +16,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "json-server": "^1.0.0-beta.2",
     "lucide-react": "^0.427.0",
     "next": "14.2.5",
     "next-themes": "^0.3.0",

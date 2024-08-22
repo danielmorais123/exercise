@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={poppins.className} >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="dark:bg-zinc-900 dark:text-zinc-200 bg-zinc-200 text-zinc-800">
             {children}

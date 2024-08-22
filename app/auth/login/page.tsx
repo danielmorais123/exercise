@@ -1,11 +1,20 @@
 import Login from "@/components/Login";
-import { FileType } from "@/lib/types";
+import { FileType, User } from "@/lib/types";
 import { promises as fs } from "fs";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default async function page() {
-  const fileRead = await fs.readFile(process.cwd() + "/db/data.json", "utf8");
-  const file: FileType = JSON.parse(fileRead);
-  const { users } = file;
+  const cookieStore = cookies();
+  const cookieEmail = cookieStore.get("email");
+  if (cookieEmail?.value) {
+    console.log("VALIDA")
+    redirect("/");
+  }
+  const promiseUsers = await fetch("http://localhost:5000/users");
+  const users: User[] = await promiseUsers.json();
+
+  console.log(users)
 
   return <Login users={users} />;
 }

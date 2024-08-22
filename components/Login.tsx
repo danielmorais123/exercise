@@ -34,13 +34,14 @@ export default function Login({ users }: { users: User[] }) {
       body: JSON.stringify(email),
     });
     const response = await r.json();
-    if (response.sucess) {
-      router.push("/");
-    } else {
+
+    if (!response?.sucess) {
       toast({
         title: "Erro",
         description: "Erro ao guardar a sua sessão",
       });
+    } else {
+      router.push("/");
     }
   }
   return (

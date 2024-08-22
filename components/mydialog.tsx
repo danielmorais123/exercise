@@ -52,7 +52,7 @@ export default function MyDialog({ user }: { user: User }) {
             <Input
               id="userId"
               name="userId"
-              value={user.id}
+              defaultValue={user?.id}
               className="hidden"
             />
             <div className="grid grid-cols-4 items-center gap-4">

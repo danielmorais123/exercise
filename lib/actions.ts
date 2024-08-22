@@ -3,6 +3,7 @@
 import { promises as fs } from "fs";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 const path = process.cwd() + "/db/data.json";
 export async function getData() {
   return await fs.readFile(path, "utf8");
@@ -45,7 +46,9 @@ export async function savePost(form: FormData) {
   }
 }
 
-export async function signOut(){
+export async function signOut() {
   const cookieStore = cookies();
-  const cookieEmail = cookieStore.delete("email");
+  cookieStore.delete("email");
+
+ redirect("/");
 }
