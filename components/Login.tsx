@@ -29,20 +29,14 @@ export default function Login({ users }: { users: User[] }) {
       setPassword("");
       return;
     }
-    const r = await fetch("http://localhost:3000/cookie/email", {
-      method: "post",
-      body: JSON.stringify(email),
-    });
-    const response = await r.json();
+    // const r = await fetch("http://localhost:3000/cookie/email", {
+    //   method: "post",
+    //   body: JSON.stringify(email),
+    // });
+    // const response = await r.json();
 
-    if (!response?.sucess) {
-      toast({
-        title: "Erro",
-        description: "Erro ao guardar a sua sessão",
-      });
-    } else {
-      router.push("/");
-    }
+    document.cookie = `email=${email}; path=/`;
+    router.refresh();
   }
   return (
     <div className="min-h-screen  flex flex-col gap-2 p-2">
